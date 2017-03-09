@@ -5,6 +5,7 @@
 #ifndef JIMP_EXERCISES_DOUBLEBASEPALINDROMES_H
 #define JIMP_EXERCISES_DOUBLEBASEPALINDROMES_H
 #include <cstdint>
+#include <iostream>
 #include <string>
 
 std::string dzies_na_bin(int dziesietna);

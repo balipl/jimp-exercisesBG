@@ -6,6 +6,7 @@ set(SOURCE_FILES DoubleBasePalindromes.cpp)
 
 add_library(libdoublebasepalindromes STATIC ${SOURCE_FILES})
 target_include_directories(libdoublebasepalindromes PUBLIC .)
+target_link_libraries(libdoublebasepalindromes libpalindrome)
 
 add_executable(doublebasepalindromes ${SOURCE_FILES} main.cpp)
 

@@ -1,25 +1,13 @@
 //
 // Created by ASUSTek on 2017-03-09.
 //
+#include <Palindrome.h>
 
 #include "DoubleBasePalindromes.h"
-#include "iostream"
 
 using namespace std;
 
-bool is_palindrome(string str) {
-//lol
-    string reverse;
-    int length = str.length();
-    for (int x = 0; x < length; x++) {
-        reverse = reverse + str[length - x - 1];
-    }
 
-    if (str.compare(reverse) == 0)
-        return true;
-    else
-        return false;
-}
 string DecToBin(int dec){
     string bin;
     string reversed_bin;

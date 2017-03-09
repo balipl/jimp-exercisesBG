@@ -8,7 +8,7 @@
 using namespace std;
 
 bool is_palindrome(string str) {
-
+//lol
     string reverse;
     int length = str.length();
     for (int x = 0; x < length; x++) {

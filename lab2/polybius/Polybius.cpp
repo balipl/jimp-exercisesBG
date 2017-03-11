@@ -6,7 +6,7 @@
 
 ifstream opened_file("file.txt");
 ofstream saving_file ("file.txt", ios_base::in | ios_base::app);
-
+//raz
 if(!opened_file)
 cout << "Nie można otworzyć pliku!" << endl;
 

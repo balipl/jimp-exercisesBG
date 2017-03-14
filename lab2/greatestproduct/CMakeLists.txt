@@ -1,4 +1,3 @@
-
 project(greatestproduct)
 
 set(HEDEAR_FILES GreatestProduct.h)

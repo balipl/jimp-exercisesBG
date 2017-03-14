@@ -3,21 +3,22 @@
 //
 
 #include "GreatestProduct.h"
+using namespace std;
 
+int GreatestProduct(const vector<int> &numbers, int k){
+    vector<int> max_p;
+    vector<int> max_m;
+    int maximum_m = 1;
+    int maximum_p = -1;
 
-int GreatestProduct(const std::vector<int> &numbers, int k){
-    int max1=-1;
-    int max2=-1;
-    for (int v : numbers) {
-        if(v>max1){
-            max2=max1;
-            max1=v;
-        }
-        else if(v>max2){
-            max2 = v;
-        }
+    for (auto n : numbers) {
+        if(n > maximum_p)
+            max_p.push_back(n);
+        if(n<maximum_m)
+            max_m.push_back(n);
     }
-    return max1*max2;
+
+    return 0;
 
 
 

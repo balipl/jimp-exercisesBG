@@ -6,6 +6,8 @@
 #define JIMP_EXERCISES_GREATESTPRODUCT_H
 
 #include <vector>
+#include <iostream>
+#include <iomanip>
 
 int GreatestProduct(const std::vector<int> &numbers, int k);
 

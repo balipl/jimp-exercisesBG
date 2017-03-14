@@ -1,4 +1,3 @@
-
 project(polybius)
 
 set(HEDEAR_FILES Polybius.h)

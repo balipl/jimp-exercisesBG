@@ -7,6 +7,9 @@
 
 #include <string>
 #include <map>
+#include <iostream>
+#include <iostream>
+#include <fstream>
 
 std::string PolybiusCrypt(std::string message);
 std::string PolybiusDecrypt(std::string crypted);

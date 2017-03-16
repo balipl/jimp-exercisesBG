@@ -6,9 +6,9 @@
 using namespace std;
 
 int main(){
-    //vector<char> v = {};
-    //vector<string> v1 = {"8"};
-    //XorCypherBreaker(v, 4, v1);
+    vector<char> v = {};
+    vector<string> v1 = {"8"};
+    XorCypherBreaker(v, 4, v1);
 
     return 0;
 }

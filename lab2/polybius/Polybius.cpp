@@ -21,7 +21,7 @@ string PolybiusDecrypt(string crypted){
     string encrypted_message = "";
     int i_number;
     string s_number;
-    for (int i = 0; i < crypted.length()-1; i+=2) {
+   for (int i = 0; i +1 < crypted.length(); i=i+2) {
         s_number = "";
         s_number = s_number + crypted[i];
         s_number = s_number + crypted[i+1];
@@ -29,4 +29,5 @@ string PolybiusDecrypt(string crypted){
         encrypted_message += deszyfr[i_number];
     }
      return encrypted_message;
+    return 0;
 }

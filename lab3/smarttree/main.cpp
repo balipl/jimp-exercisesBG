@@ -7,6 +7,6 @@
 
 int main(){
     using namespace std;
-    cout << "NIC";
+    datastructures::RestoreTree("[98 [100 [1234 [none] [none]] [4321 [none] [none]]] ");
 
 }

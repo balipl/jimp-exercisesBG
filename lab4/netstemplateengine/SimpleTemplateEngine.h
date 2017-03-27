@@ -9,14 +9,20 @@
 #include <unordered_map>
 
 namespace nets {
-    class SimpleTemplateEngine {
+    class View {
+    private:
+        std::string text_;
+    public:
+        View();
+
+        View(std::string text);
+
+        ~View();
 
 
-
-        //Używana struktura danych: View
-
-//sygnatury metod w klasie View:
         std::string Render(const std::unordered_map <std::string, std::string> &model) const;
+
+
 
 
     };

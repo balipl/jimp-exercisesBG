@@ -50,7 +50,7 @@ namespace geometry{
         c_=c;
         d_=d;
     }
-
+    Square::~Square() {}
     double Square::Circumference() const {
         double side = a_.Distance(b_);
         if(a_.Distance(b_)!=c_.Distance(d_)) return 0;

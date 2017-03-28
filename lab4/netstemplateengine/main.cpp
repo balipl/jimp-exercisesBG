@@ -1,15 +1,13 @@
 //
-// Created by bartek on 27.03.17.
+// Created by ASUSTek on 2017-03-27.
 //
+
 #include "SimpleTemplateEngine.h"
 #include <iostream>
 #include <map>
-namespace nets{
-int main(){
-
-    //View view{"Hello {{name}}!"};
-    //std::unordered_map<std::string,std::string> mapa1 =  {{"name","Xavier"}};
-    //std::cout << view.Render(mapa1);
-std::cout << "nic";
+int main()
+{
+    nets::View view{"{{template_with_underscore}}<=>{{template_with_underscore_missing}}"};
+    std::cout << view.Render({{"template_with_underscore", "replacement"}});
     return 0;
-}}
+}

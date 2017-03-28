@@ -61,7 +61,7 @@ TEST_F(TemplateEngineTests, MissingDataShouldBeBlank) {
 }
 
 TEST_F(TemplateEngineTests, TemplatesMayContainUnderscores) {
-  const auto view = make_unique<View>("{{template_with_underscore}}<=>{{template_with_undersocre_missing}}");
+  const auto view = make_unique<View>("{{template_with_underscore}}<=>{{template_with_underscore_missing}}");
   EXPECT_EQ("replacement<=>", view->Render({{"template_with_underscore", "replacement"}}));
 }
 

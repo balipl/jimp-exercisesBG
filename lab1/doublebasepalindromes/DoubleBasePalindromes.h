@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 
-std::string dzies_na_bin(int dziesietna);
+std::string DecToBin(int decimal);
 uint64_t DoubleBasePalindromes(int max_vaule_exculsive);
 
 #endif //JIMP_EXERCISES_DOUBLEBASEPALINDROMES_H

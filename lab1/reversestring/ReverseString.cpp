@@ -4,15 +4,14 @@
 
 #include "ReverseString.h"
 
-using namespace std;
+using std::string;
 
-string reverse(string str){
-
-    string str1;
+string reverse(string str) {
+    string reversedString;
     int length = str.length();
-    for(int x=0; x<length; ++x)
-    {
-        str1 = str1 + str[length-x-1];
+    for (int x = 0; x < length; ++x) {
+        reversedString = reversedString + str[length - x - 1];
     }
-    return str1;
+
+    return reversedString;
 }

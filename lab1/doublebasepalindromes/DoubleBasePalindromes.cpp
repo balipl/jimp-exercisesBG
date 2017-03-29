@@ -6,7 +6,7 @@
 #include "DoubleBasePalindromes.h"
 
 using namespace std;
-
+//x
 
 string DecToBin(int dec){
     string bin;

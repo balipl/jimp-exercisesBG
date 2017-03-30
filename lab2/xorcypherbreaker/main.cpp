@@ -1,6 +1,6 @@
 //
 // Created by bartek on 16.03.17.
-//
+//x
 
 #include "XorCypherBreaker.h"
 

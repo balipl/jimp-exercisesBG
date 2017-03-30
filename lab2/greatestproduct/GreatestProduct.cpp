@@ -1,6 +1,6 @@
 //
 // Created by ASUSTek on 2017-03-09.
-//
+//x
 #include "GreatestProduct.h"
 
 using std::vector;

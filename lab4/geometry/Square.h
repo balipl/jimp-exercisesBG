@@ -9,7 +9,7 @@
 #include <cmath>
 #include <iostream>
 
-namespace geometry{
+namespace geometry {
     class Point {
     public:
         Point();
@@ -18,21 +18,23 @@ namespace geometry{
 
         ~Point();
 
-        void ToSting (std::ostream *out) const;
+        void ToSting(std::ostream *out) const;
 
         double Distance(const Point &other) const;
 
         double GetX() const;
+
         double GetY() const;
 
         void SetX(double x);
+
         void SetY(double y);
 
     private:
-        double x_, y_ ;
+        double x_, y_;
     };
 
-    class Square{
+    class Square {
     public:
         Square();
 
@@ -41,14 +43,12 @@ namespace geometry{
         ~Square();
 
         double Circumference() const;
+
         double Area() const;
 
     private:
         Point a_, b_, c_, d_;
     };
-
-
-
 }
 
 #endif //JIMP_EXERCISES_SQUARE_H

@@ -11,25 +11,32 @@
 #include <sstream>
 #include <map>
 #include <regex>
-
+#include <math.h>
+#include <iostream>
 
 namespace nets {
-//Używana struktura danych: JsonValue
     class JsonValue {
     public:
         JsonValue();
-        JsonValue(int value_int);
-        JsonValue(double value_double);
-        JsonValue(std::string value_string);
-        JsonValue(bool value_bool);
-        JsonValue(std::vector<JsonValue> value_vector);
-        JsonValue(std::map<std::string, JsonValue> value_map);
+
         ~JsonValue();
 
+        JsonValue(int value_int);
 
-        //sygnatury metod w klasie View
+        JsonValue(double value_double);
+
+        JsonValue(std::string value_string);
+
+        JsonValue(bool value_bool);
+
+        JsonValue(std::vector<JsonValue> value_vector);
+
+        JsonValue(std::map<std::string, JsonValue> value_map);
+
         std::experimental::optional<JsonValue> ValueByName(const std::string &name) const;
+
         std::string ToString() const;
+
     private:
         int value_int_;
         double value_double_;

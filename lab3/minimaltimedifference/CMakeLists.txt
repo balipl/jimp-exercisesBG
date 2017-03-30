@@ -1,6 +1,7 @@
 
 project(minimaltimedifference)
 
+
 set(HEDEAR_FILES MinimalTimeDifference.h)
 set(SOURCE_FILES MinimalTimeDifference.cpp)
 

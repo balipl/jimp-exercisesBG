@@ -1,6 +1,7 @@
 
 project(smarttree)
 
+
 set(HEDEAR_FILES SmartTree.h)
 set(SOURCE_FILES SmartTree.cpp)
 

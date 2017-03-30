@@ -1,6 +1,6 @@
 //
 // Created by bartek on 21.03.17.
-//
+//x
 
 #ifndef JIMP_EXERCISES_SMARTTREE_H
 #define JIMP_EXERCISES_SMARTTREE_H

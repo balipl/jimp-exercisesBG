@@ -1,6 +1,6 @@
 //
 // Created by bartek on 16.03.17.
-//
+//x
 
 #ifndef JIMP_EXERCISES_MINIMALTIMEDIFFERENCE_H
 #define JIMP_EXERCISES_MINIMALTIMEDIFFERENCE_H

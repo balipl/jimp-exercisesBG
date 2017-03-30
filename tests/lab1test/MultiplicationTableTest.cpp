@@ -1,6 +1,6 @@
 //
 // Created by mwypych on 16.02.17.
-//
+//x
 
 #include <MultiplicationTable.h>
 #include <gtest/gtest.h>

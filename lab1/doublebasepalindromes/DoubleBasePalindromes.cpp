@@ -1,6 +1,6 @@
 //
 // Created by ASUSTek on 2017-03-09.
-//
+//x
 #include <Palindrome.h>
 
 #include "DoubleBasePalindromes.h"

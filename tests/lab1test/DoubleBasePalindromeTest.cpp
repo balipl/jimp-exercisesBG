@@ -1,6 +1,6 @@
 //
 // Created by mwypych on 16.02.17.
-//
+//x
 #include <gtest/gtest.h>
 #include <DoubleBasePalindromes.h>
 #include <vector>

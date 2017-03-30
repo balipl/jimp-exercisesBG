@@ -1,6 +1,6 @@
 //
 // Created by mwypych on 09.02.17.
-//
+//x
 
 #include <Palindrome.h>
 #include <gtest/gtest.h>

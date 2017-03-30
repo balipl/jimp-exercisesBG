@@ -2,6 +2,7 @@
 #message( STATUS "gmock_SOURCE_DIR: " ${gmock_SOURCE_DIR} )
 message(STATUS "lab1test::HAVE_DIR_PALINDROME:  ${HAVE_DIR_PALINDROME}")
 
+
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 include_directories(${gmock_SOURCE_DIR}/include ${gmock_SOURCE_DIR})
 

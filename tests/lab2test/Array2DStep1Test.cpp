@@ -23,7 +23,7 @@ TEST_F(Array2DStep1Tests, Define_Array2D_FunctionOf_N_Rows_And_N_Columns_FilledU
     }
   }
   // commented see different steps
-  // DeleteArray2D(output, k_rows, k_cols);
+   DeleteArray2D(output, k_rows, k_cols);
 }
 
 TEST_F(Array2DStep1Tests, InvalidArgumentsShouldResultWithNullptr) {

@@ -4,27 +4,38 @@
 
 #include "Array2D.h"
 
+
 int **Array2D(int n_rows, int n_columns){
-    //2 * bo zwraca wskanizk na wskaznik
 
-    int **tab = new int*[n_columns]
+    int** tab = new int*[n_columns];
 
-    for (int i = 0; i < ; ++i) {
-        tab[i]=new int(n_rows)
-
+    for (int i = 0; i < n_columns; ++i) {
+        tab[i] = new int[n_rows];
     }
 
-    wypelnic
-
-
-
+    FillArray2D(tab, n_rows, n_columns);
+    //DeleteArray2D(tab,n_rows,n_columns);
+    return tab;
 }
-void DeleteArray2D(int **array, int n_rows, int n_columns){
 
-    //usuwa te tablice tablicą for,a potem ostatnia instrukcja usuwa tablice wskaznikow
-
-    for (int i = 0; i < ; ++i) {
-        delete [] array[i]
+void FillArray2D(int **tab, int n_rows, int n_columns) {
+    int counter = 1;
+    for (int i = 0; i < n_rows ; ++i) {
+        for (int j = 0; j <n_columns ; ++j) {
+            tab[i][j] = counter;
+            counter++;
+            //std::cout << tab[i][j] << " ";
+        }
     }
-    delete [] array
+}
+
+void DeleteArray2D(int **array, int n_rows, int n_columns){
+    for (int i = 0; i < n_columns ; i+=1) {
+        array[i] = nullptr;
+        delete [] array[i];
+        array[i] = nullptr;
+    }
+    array = nullptr;
+    delete [] array;
+    array = nullptr;
 }

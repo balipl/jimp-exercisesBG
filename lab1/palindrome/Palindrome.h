@@ -3,10 +3,12 @@
 //
 
 #ifndef JIMP_EXERCISES_PALINDROME_H
-#include <string>
 #define JIMP_EXERCISES_PALINDROME_H
 
+#include <string>
 
 bool is_palindrome(std::string str);
+std::string getString(std::string str);
+
 
 #endif //JIMP_EXERCISES_PALINDROME_H

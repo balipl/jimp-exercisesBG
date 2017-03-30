@@ -7,11 +7,11 @@
 
 #include <string>
 #include <unordered_map>
+#include <iostream>
+#include <map>
 
 namespace nets {
     class View {
-    private:
-        std::string text_;
     public:
         View();
 
@@ -19,13 +19,10 @@ namespace nets {
 
         ~View();
 
+        std::string Render(const std::unordered_map<std::string, std::string> &model) const;
 
-        std::string Render(const std::unordered_map <std::string, std::string> &model) const;
-
-
-
-
+    private:
+        std::string text_;
     };
-
 }
 #endif //JIMP_EXERCISES_SIMPLETEMPLATEENGINE_H

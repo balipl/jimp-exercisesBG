@@ -3,11 +3,10 @@
 //
 
 #include "SimpleTemplateEngine.h"
-#include <iostream>
-#include <map>
+using std::cout;
 int main()
 {
     nets::View view{"{{template_with_underscore}}<=>{{template_with_underscore_missing}}"};
-    std::cout << view.Render({{"template_with_underscore", "replacement"}});
+    cout << view.Render({{"template_with_underscore", "replacement"}});
     return 0;
 }

@@ -9,31 +9,31 @@
 #include <complex>
 #include <string>
 
-class Matrix {
-public:
-    Matrix();
+namespace algebra {
+    class Matrix {
+    public:
+        Matrix(); //konstruktor bezparametryczny
 
-    Matrix(int kol, int wier);
+        Matrix(int n_rows, int n_cols); //konstruktor parametryczny rozmiar
 
-    Matrix(std::string MatLab);
+        Matrix(std::string MatLab); //konstruktor parametryczny matlab
 
-    //Matrix(const Matrix &matrix);
+        Matrix(const Matrix &matrix);
 
-    ~Matrix();
-
-    int GetSzer() const;
-    int GetWys() const;
-    std::string GetMac(int a, int b) const;
+        ~Matrix();
 
 
-private:
-    int wysokosc_;
-    int szerokosc_;
-    int **macierz = new int *[szerokosc_];
+        std::complex<double> GetElem(int n_rows, int n_cols);
 
-    for ( int i = 0; i < szerokosc_ ; i++){
-        macierz[i] = new int [wysokosc_];}
-};
+        void SetElem(int n_rows, int n_cols, std::complex<double> element);
 
+
+    private:
+        int n_rows_;
+        int n_cols_;
+        std::complex<double> **matrix_;
+
+    };
+}
 
 #endif //JIMP_EXERCISES_MATRIX_H

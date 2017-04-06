@@ -24,25 +24,32 @@ namespace algebra {
         };
 
         Matrix(int n_rows, int n_cols);
+
         Matrix(const Matrix &matrix);
+
         std::complex<double> Get(int n_rows, int n_cols) const;
-        void Set(int, int, std::complex<double>);
-        std::pair<size_t, size_t > Size() const;
+
+        void Set(int n_rows, int n_cols, std::complex<double> number);
+
+        std::pair<size_t, size_t> Size() const;
+
         std::string Print() const;
+
         ~Matrix();
 
-        Matrix Add(const Matrix &m2)const;
-        Matrix Sub(const Matrix &m2)const;
-        Matrix Mul(const Matrix &m2)const;
-        Matrix Div(const Matrix &m2)const;
-        Matrix Pow(int pow);
+        Matrix Add(const Matrix &m2) const;
 
-        int moja_funkcja();
+        Matrix Sub(const Matrix &m2) const;
+
+        Matrix Mul(const Matrix &m2) const;
+
+        Matrix Div(const Matrix &m2) const;
+
+        Matrix Pow(int pow);
 
     private:
         std::vector<std::vector<std::complex<double>>> matrix_;
         std::pair<size_t, size_t> size_;
-
     };
 
 }

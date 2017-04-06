@@ -4,55 +4,53 @@
 
 #include "TextPool.h"
 
-namespace pool{
+namespace pool {
 
 
-TextPool::TextPool() {}
+    TextPool::TextPool() {}
 
-TextPool::~TextPool() {
-    pool_.clear();
-}
+    TextPool::~TextPool() {
+        pool_.clear();
+    }
 
 //konstruktor przenoszacy
-    TextPool::TextPool(TextPool &&textpool): pool_{nullptr} {
-std::swap(pool_, textpool.pool_);
+    TextPool::TextPool(TextPool &&textpool) : pool_{nullptr} {
+        std::swap(pool_, textpool.pool_);
     }
-//operator przypisania
+
+//operator przenoszacy
     TextPool &TextPool::operator=(TextPool &&textpool) {
-        if(this == &textpool)
+        if (this == &textpool)
             return *this;
 
         pool_.clear();
         std::swap(pool_, textpool.pool_);
     }
 
-    TextPool::TextPool(const std::initializer_list<std::experimental::string_view> pool): pool_(pool){}
-
-std::experimental::string_view TextPool::Intern(const std::string &str) {
-    for (auto i = pool_.begin(); i != pool_.end() ; ++i) {
-        if(str == *i) return *i;
+    TextPool::TextPool(const std::initializer_list<std::experimental::string_view> pool) {
+        pool_ = pool;
     }
 
-    pool_.insert(std::experimental::string_view(str));
+    std::experimental::string_view TextPool::Intern(const std::string &str) {
+        for (auto i = pool_.begin(); i != pool_.end(); i++) {
+            if (str == *i) return *i;
+        }
 
-    for(auto i = pool_.begin() ; i!= pool_.end(); i++){
-        if(str==*i) return *i;
-    }
-}
+        pool_.insert(std::experimental::string_view(str));
 
-size_t pool::TextPool::StoredStringCount() const {
-    size_t size = 0;
-
-    for(auto m : pool_){
-        size++;
-        if(m=="\0") size--;
+        for (auto i = pool_.begin(); i != pool_.end(); i++) {
+            if (str == *i) return *i;
+        }
     }
 
-    return size;
-}
+    size_t pool::TextPool::StoredStringCount() const {
+        size_t size = 0;
 
+        for (auto m : pool_) {
+            size++;
+            if (m == "\0") size--;
+        }
 
-
-
-
+        return size;
+    }
 }

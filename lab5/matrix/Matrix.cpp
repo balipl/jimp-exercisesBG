@@ -13,14 +13,13 @@ namespace algebra {
         size_.second = n_cols;
 
         matrix_.resize(n_rows);
-
         for (int i = 0; i < n_rows; ++i) {
             matrix_[i].resize(n_cols);
         }
     }
 
     Matrix::Matrix(const Matrix &matrix) {
-        size_=matrix.Size();
+        size_ = matrix.Size();
         matrix_ = matrix.matrix_;
     }
 
@@ -28,8 +27,8 @@ namespace algebra {
         return matrix_[n_rows][n_cols];
     }
 
-    void Matrix::Set(int, int, std::complex<double>) {
-
+    void Matrix::Set(int n_rows, int n_cols, std::complex<double> number) {
+        matrix_[n_rows][n_cols] = number;
     }
 
     std::pair<size_t, size_t> Matrix::Size() const {
@@ -37,7 +36,7 @@ namespace algebra {
     }
 
     std::string Matrix::Print() const {
-        std::string exit = "[" ;
+        std::string exit = "[";
 
         for (int i = 0; i < size_.first; ++i) {
             for (int j = 0; j < size_.second; ++j) {
@@ -52,12 +51,10 @@ namespace algebra {
                 imag << matrix_[i][j].imag();
                 imag >> imag_string;
 
-
                 exit = exit + real_string + "i" + imag_string;
-                if(j< size_.second - 1) exit += ", ";
+                if (j < size_.second - 1) exit += ", ";
             }
-            if(i < size_.first -1) exit += "; ";
-
+            if (i < size_.first - 1) exit += "; ";
         }
         exit += "]";
 
@@ -65,23 +62,21 @@ namespace algebra {
     }
 
     Matrix::~Matrix() {
-
     }
 
     Matrix Matrix::Add(const Matrix &m2) const {
         Matrix m3;
         m3.size_.first = m2.size_.first;
-        m3.size_.second = m2.size_.first;
+        m3.size_.second = m2.size_.second;
 
         m3.matrix_.resize(m3.size_.first);
-
         for (int i = 0; i < m3.size_.first; ++i) {
             m3.matrix_[i].resize(m3.size_.second);
         }
 
 
         for (int i = 0; i < size_.first; ++i) {
-            for (int j = 0; j <size_.second ; ++j) {
+            for (int j = 0; j < size_.second; ++j) {
                 m3.matrix_[i][j] = matrix_[i][j] + m2.matrix_[i][j];
             }
         }
@@ -91,7 +86,7 @@ namespace algebra {
     Matrix Matrix::Sub(const Matrix &m2) const {
         Matrix m3;
         m3.size_.first = m2.size_.first;
-        m3.size_.second = m2.size_.first;
+        m3.size_.second = m2.size_.second;
 
         m3.matrix_.resize(m3.size_.first);
 
@@ -101,7 +96,7 @@ namespace algebra {
 
 
         for (int i = 0; i < size_.first; ++i) {
-            for (int j = 0; j <size_.second ; ++j) {
+            for (int j = 0; j < size_.second; ++j) {
                 m3.matrix_[i][j] = matrix_[i][j] - m2.matrix_[i][j];
             }
         }
@@ -113,18 +108,13 @@ namespace algebra {
         Matrix m3;
 
         if (size_.second == m2.size_.first) {
-//        std::cout << size_.first << size_.second;
-        m3.size_.first = size_.first;
-        m3.size_.second = m2.size_.second;
+            m3.size_.first = size_.first;
+            m3.size_.second = m2.size_.second;
 
-        m3.matrix_.resize(m3.size_.first);
-
-        for (int i = 0; i < m3.size_.first; ++i) {
-            m3.matrix_[i].resize(m3.size_.second);
-        }
-        //std::cout << size_.first << size_.second << m2.size_.first << m2.size_.second;
-
-
+            m3.matrix_.resize(m3.size_.first);
+            for (int i = 0; i < m3.size_.first; ++i) {
+                m3.matrix_[i].resize(m3.size_.second);
+            }
 
             for (int j = 0; j < m3.size_.first; ++j) {
                 for (int i = 0; i < m3.size_.second; ++i) {
@@ -145,27 +135,24 @@ namespace algebra {
     Matrix Matrix::Pow(int pow) {
         Matrix m3;
 
-        if(size_.first != size_.second)
+        if (size_.first != size_.second)
             return m3;
 
         m3.size_.first = size_.first;
-        m3.size_.second = size_.first;
+        m3.size_.second = size_.second;
 
         m3.matrix_.resize(m3.size_.first);
-
         for (int i = 0; i < m3.size_.first; ++i) {
             m3.matrix_[i].resize(m3.size_.second);
         }
 
-        if(pow == 0 )
-        {
+        if (pow == 0) {
             for (int i = 0; i < m3.size_.first; ++i) {
                 m3.matrix_[i][i] = 1;
             }
         }
 
-        if(pow > 0)
-        {
+        if (pow > 0) {
             for (int i = 0; i < size_.first; ++i) {
                 for (int j = 0; j < size_.second; ++j) {
                     m3.matrix_[i][j] = matrix_[i][j];
@@ -175,13 +162,9 @@ namespace algebra {
             for (int k = 0; k < pow - 1; ++k) {
                 m3 = m3.Mul(*this);
             }
-
-
         }
 
         return m3;
 
     }
-
-
 }

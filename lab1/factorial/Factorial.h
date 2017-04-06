@@ -1,0 +1,12 @@
+//
+// Created by mwypych on 02.02.17.
+//x
+
+#ifndef JIMP_EXERCISES_FACTORIAL_H
+#define JIMP_EXERCISES_FACTORIAL_H
+
+#include <iostream>
+
+int factorial(int value);
+
+#endif //JIMP_EXERCISES_FACTORIAL_H

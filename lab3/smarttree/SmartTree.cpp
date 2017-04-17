@@ -53,19 +53,18 @@ namespace datastructures {
 
     unique_ptr<SmartTree> RestoreTree(const string &tree) {
         int i = 0;
-        string lisc;
+        string leaf;
         unique_ptr<SmartTree> root;
         while (tree[i] != '\0') {
             if (tree[i] == '[') {
 
                 i += 1;
-                lisc = "";
+                leaf = "";
                 while (tree[i] != ' ' && tree[i] != ']') {
-                    lisc = lisc + tree[i];
+                    leaf = leaf + tree[i];
                     i += 1;
                 }
-                root = CreateLeaf(stoi(lisc));
-                //std::cout << lisc << " ";
+                root = CreateLeaf(stoi(leaf));
             }
             i += 1;
         }

@@ -29,6 +29,7 @@ namespace minimaltimedifference {
         for (int i = 0; i < times.size(); ++i) {
             t_minutes.push_back(ToMinutes(times[i]));
         }
+
         sort(t_minutes.begin(), t_minutes.end());
 
         for (int j = 0; j < t_minutes.size() - 1; ++j) {

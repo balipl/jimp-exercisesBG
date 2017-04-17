@@ -49,7 +49,7 @@ namespace nets {
         if (exit_text[exit_text.size() - 1] == '\0') {
             exit_text.pop_back();
         }
-        
+
         return exit_text;
     }
 }

@@ -9,37 +9,51 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <sstream>
+#include <iomanip>
+#include <regex>
 
 using std::istream;
-
+using std::ostream;
+using std::string;
+using std::regex;
+using std::setw;
+using std::setfill;
+using std::cout;
+using std::stoi;
+using std::regex_match;
+using std::to_string;
+using std::endl;
 namespace moviesubs {
 
 
     class MovieSubtitles {
     public:
-        virtual void ShiftAllSubtitlesBy(int delay, int fps, istream *ins, istream *outs);
+        virtual void ShiftAllSubtitlesBy(int delay, int fps, istream *ins, ostream *outs);
     };
 
     class MicroDvdSubtitles : public MovieSubtitles {
     public:
-        virtual void ShiftAllSubtitlesBy(int delay, int fps, istream *ins, istream *outs) override;
+        virtual void ShiftAllSubtitlesBy(int delay, int fps, istream *ins, ostream *outs) override;
 
 
     };
 
     class SubRipSubtitles : public MovieSubtitles {
-        virtual void ShiftAllSubtitlesBy(int delay, int fps, istream *ins, istream *outs) override;
-
-
-
+    public:
+        virtual void ShiftAllSubtitlesBy(int delay, int fps, istream *ins, ostream *outs) override;
     };
+
+
+
+
 
     class MovieSubtitlesException : public std::invalid_argument {
     public:
-        MovieSubtitlesException(std::string errmessage) : std::invalid_argument{errmessage} {};
+        MovieSubtitlesException(std::string err_message) : std::invalid_argument{err_message} {};
     protected:
         int line_number_;
-        std::string line_;
+        std::string line_text_;
 
     };
 
@@ -48,22 +62,23 @@ namespace moviesubs {
         NegativeFrameAfterShift(int line_number, const char *line);
     };
 
-    class SubtitleEndBeforeStart {
+    class SubtitleEndBeforeStart : public MovieSubtitlesException {
     public:
         SubtitleEndBeforeStart(int line_number, const char *line);
+        int LineAt(void) const;
     };
 
-    class InvalidSubtitleLineFormat {
+    class InvalidSubtitleLineFormat : public MovieSubtitlesException {
     public:
         InvalidSubtitleLineFormat(int line_number, const char *line);
     };
 
-    class MissingTimeSpecification {
+    class MissingTimeSpecification : public MovieSubtitlesException {
     public:
         MissingTimeSpecification(int line_number, const char *line);
     };
 
-    class OutOfOrderFrames {
+    class OutOfOrderFrames : public MovieSubtitlesException {
     public:
         OutOfOrderFrames(int line_number, const char *line);
     };

@@ -6,9 +6,7 @@
 
 namespace moviesubs {
 
-    void MovieSubtitles::ShiftAllSubtitlesBy(int delay, int fps, istream *ins, ostream *outs) {
-
-    }
+    void MovieSubtitles::ShiftAllSubtitlesBy(int delay, int fps, istream *ins, ostream *outs) {}
 
     void MicroDvdSubtitles::ShiftAllSubtitlesBy(int delay, int fps, istream *ins, ostream *outs) {
         int one_frame_lenght = 1000 / fps;
@@ -40,30 +38,30 @@ namespace moviesubs {
 
                     *outs << out_text << endl;
                     line_number++;
+
                 } else {
                     throw InvalidSubtitleLineFormat(line_number, line_text.c_str());
-
                 }
             }
-
         }
     }
 
 
     void SubRipSubtitles::ShiftAllSubtitlesBy(int delay, int fps, istream *ins, ostream *outs) {
+        int line_number;
+        string line_text;
+
+        regex number_pattern{"^(\\d+)$"};
+        regex pattern{"^(\\d{2}):(\\d{2}):(\\d{2}),(\\d{3}) --> (\\d{2}):(\\d{2}):(\\d{2}),(\\d{3})$"};
+        regex empty_pattern{"^$"};
+        bool previous_line_empty = 1;
+        bool previous_line_number = 0;
+        bool previous_line_time = 0;
+        int previous_number = 0;
 
         if (fps < 0) {
             throw std::invalid_argument("FPS error");
         } else {
-            int line_number;
-            string line_text;
-            regex number_pattern{"^(\\d+)$"};
-            regex pattern{"^(\\d{2}):(\\d{2}):(\\d{2}),(\\d{3}) --> (\\d{2}):(\\d{2}):(\\d{2}),(\\d{3})$"};
-            bool previous_line_empty = 1;
-            bool previous_line_number = 0;
-            bool previous_line_time = 0;
-            int previous_number = 0;
-
 
             while (getline(*ins, line_text)) {
                 std::smatch result;
@@ -84,8 +82,7 @@ namespace moviesubs {
                         throw InvalidSubtitleLineFormat(line_number, line_text.c_str());
                     }
 
-                }
-                else if (previous_line_number) {
+                } else if (previous_line_number) {
                     if (regex_match(line_text, result, pattern)) {
                         string exit_text = "";
                         int start_time = (((stoi(result[1])) * 60 + stoi(result[2])) * 60 + stoi(result[3])) * 1000 +
@@ -105,37 +102,12 @@ namespace moviesubs {
 
                         end_time += delay;
 
-                        int time_p4 = start_time % 1000;
-                        start_time /= 1000;
-                        int time_p3 = start_time % 60;
-                        start_time /= 60;
-                        int time_p2 = start_time % 60;
-                        int time_p1 = start_time / 60;
-
-                        int time2_p4 = end_time % 1000;
-                        end_time /= 1000;
-                        int time2_p3 = end_time % 60;
-                        end_time /= 60;
-                        int time2_p2 = end_time % 60;
-                        int time2_p1 = end_time / 60;
-
-                        std::ostringstream ss;
-                        ss << setw(2) << setfill('0') << time_p1 << ":";
-                        ss << setw(2) << setfill('0') << time_p2 << ":";
-                        ss << setw(2) << setfill('0') << time_p3 << ",";
-                        ss << setw(3) << setfill('0') << time_p4;
-                        std::string s1(ss.str());
-
-                        std::ostringstream ss2;
-                        ss2 << setw(2) << setfill('0') << time2_p1 << ":";
-                        ss2 << setw(2) << setfill('0') << time2_p2 << ":";
-                        ss2 << setw(2) << setfill('0') << time2_p3 << ",";
-                        ss2 << setw(3) << setfill('0') << time2_p4;
-                        std::string s2(ss2.str());
-
+                        string s1 = miliseconds_to_string(start_time);
+                        string s2 = miliseconds_to_string(end_time);
 
                         *outs << s1 << " --> " << s2 << endl;
                         line_number++;
+
                         previous_line_empty = 0;
                         previous_line_number = 0;
                         previous_line_time = 1;
@@ -143,18 +115,13 @@ namespace moviesubs {
                     } else {
                         throw InvalidSubtitleLineFormat(line_number, line_text.c_str());
                     }
-                }
-
-
-
-                else if (previous_line_time) {
-                    if(regex_match(line_text, result, regex("^$"))) {
+                } else if (previous_line_time) {
+                    if (regex_match(line_text, result, empty_pattern)) {
                         previous_line_empty = 1;
                         previous_line_number = 0;
                         previous_line_time = 0;
                         *outs << line_text << endl;
-                    }
-                    else{
+                    } else {
                         *outs << line_text << endl;
                     }
                 }
@@ -162,6 +129,24 @@ namespace moviesubs {
 
 
         }
+    }
+
+    string SubRipSubtitles::miliseconds_to_string(int time) const {
+        int time_p4 = time % 1000;
+        time /= 1000;
+        int time_p3 = time % 60;
+        time /= 60;
+        int time_p2 = time % 60;
+        int time_p1 = time / 60;
+
+        std::ostringstream ss;
+        ss << setw(2) << setfill('0') << time_p1 << ":";
+        ss << setw(2) << setfill('0') << time_p2 << ":";
+        ss << setw(2) << setfill('0') << time_p3 << ",";
+        ss << setw(3) << setfill('0') << time_p4;
+        string s1(ss.str());
+
+        return s1;
     }
 
 

@@ -42,6 +42,8 @@ namespace moviesubs {
     class SubRipSubtitles : public MovieSubtitles {
     public:
         virtual void ShiftAllSubtitlesBy(int delay, int fps, istream *ins, ostream *outs) override;
+
+        string miliseconds_to_string(int time) const;
     };
 
 

@@ -9,6 +9,7 @@
 #include <vector>
 #include <ostream>
 #include <functional>
+#include <experimental/optional>
 
 using std::string;
 using std::to_string;
@@ -87,8 +88,10 @@ namespace academia {
 
         virtual ~Building();
 
-        Building(int id_, const std::string &name_,
-                 const std::vector<std::reference_wrapper<const Serializable>> &rooms_);
+        int Id() const { return id_; }
+
+        Building(int id, const std::string &name,
+                 std::vector<Room> rooms);
 
 
         void Serialize(Serializer *ser) const override;
@@ -96,7 +99,7 @@ namespace academia {
     private:
         int id_;
         std::string name_;
-        std::vector<std::reference_wrapper<const Serializable>> rooms_;
+        std::vector<Room> rooms_;
     };
 
 
@@ -152,6 +155,25 @@ namespace academia {
         void Header(const std::string &object_name) override;
 
         void Footer(const std::string &object_name) override;
+    };
+
+
+    class BuildingRepository {
+    public:
+        BuildingRepository();
+
+        ~BuildingRepository();
+
+        BuildingRepository(const std::initializer_list<Building> &buildings);
+
+        void StoreAll(Serializer *serializer) const;
+
+        void Add(const Building &building);
+
+        std::experimental::optional<Building> operator[](int id) const;
+
+    private:
+        std::vector<Building> buildings_;
     };
 
 }

@@ -7,7 +7,7 @@
 #include <string>
 #include <memory>
 #include <MemLeakTest.h>
-#include <Serialization.h>
+#include <academiaserializer/Serialization.h>
 
 using ::academia::Room;
 using ::academia::Serializer;

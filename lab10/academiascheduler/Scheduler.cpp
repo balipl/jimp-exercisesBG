@@ -118,8 +118,61 @@ scheduled_items_.emplace_back(item);
                                                  const std::map<int, std::set<int>> &courses_of_year,
                                                  int n_time_slots) {
 
+        Schedule schedule;
+        int actual_time_slot = 1;
+        bool sth = false;
+        int actual_room = 0;
+        int room_count = rooms.size();
+        bool found_solution = false;
+        vector<int> used_years_an_hour[n_time_slots+1];
 
-        return Schedule();
+
+        for(auto &teacher_assignment : teacher_courses_assignment)
+        {
+            int teacher_id = teacher_assignment.first;
+            std::vector<int> teacher_courses = teacher_assignment.second;
+
+            for(auto &teacher_single_course : teacher_courses)
+            {
+                found_solution = false;
+
+                for(auto &year_assignment : courses_of_year)
+                {
+                    int year_id = year_assignment.first;
+                    std::set<int> year_courses = year_assignment.second;
+
+                    for(auto &year_single_course : year_courses)
+                    {
+
+                        if(teacher_single_course == year_single_course and std::find(used_years_an_hour[actual_time_slot].begin(),used_years_an_hour[actual_time_slot].end(),year_id) ==  used_years_an_hour[actual_time_slot].end())
+                        {
+                            found_solution = true;
+                            schedule.InsertScheduleItem(SchedulingItem(teacher_single_course,teacher_id,rooms[actual_room%room_count],actual_time_slot,year_id));
+                            used_years_an_hour[actual_time_slot].emplace_back(year_id);
+                            if( actual_room == room_count)
+                            {
+                                throw NoViableSolutionFound("DHEHE");
+                            }
+
+                            if(actual_time_slot < n_time_slots) {
+                                actual_time_slot++;
+                            }
+                            else if(actual_time_slot == n_time_slots){
+                                actual_time_slot =0;
+                                actual_room++;
+
+
+                            }
+                            //cout << "XXX: " << teacher_single_course << " " << teacher_id << " " << year_id << std::endl;
+                        }
+                    }
+                }
+                if(!found_solution) {throw NoViableSolutionFound("XXX");}
+            }
+        }
+
+
+        return schedule;
     }
 
 

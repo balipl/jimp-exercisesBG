@@ -1,0 +1,16 @@
+//
+// Created by Grove on 2017-06-05.
+//
+
+#ifndef JIMP_EXERCISES_SEQUENTIALGENERATOR_H
+#define JIMP_EXERCISES_SEQUENTIALGENERATOR_H
+
+
+
+class SequentialGenerator {
+
+};
+
+
+
+#endif //JIMP_EXERCISES_SEQUENTIALGENERATOR_H

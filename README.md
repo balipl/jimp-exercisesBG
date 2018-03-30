@@ -1,4 +1,4 @@
-# Project Title
+# JiMP
 
 Learning C++. Advanced OOP
 

@@ -22,4 +22,4 @@ All labs have its own tests which checked the correctness of the programs and po
 
 ## Acknowledgments
 
-* Really big thanks to our lecturer for a complete C ++ tutorial!
+* Really big thanks to our lecturer for a complete C++ tutorial!

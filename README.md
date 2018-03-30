@@ -1,15 +1,25 @@
+# Project Title
 
-### C++ programming classes problmes ###
+Learning C++. Advanced OOP
 
-#### CLion CMakeLists.txt template ####
+## Getting Started
 
-In order to create new solution faster one can define template file 
-in CLion based on [CMake template](scripts/Library_CMakeLists_Add_Template).
-To add that template one has to right click in project menu choose
-`New` from pop-up menu and and then `Edit File Templates...`. In new dialog
-`File and Code Templates` click green plus and copy paste template. 
+In each lab we learned another featchure of C++.
 
-To use it just click again `New` and then it should show up in the list. 
-The final step is to specify name which must be CMakeLists.txt and **space seperated**
-name of the testing class name e.g. `reverse string`
+* lab1 - Introduction to programming in C ++
+* lab2 - Dynamic memory management and file operations
+* lab3 - Dynamic memory management II
+* lab4 - Classes and facilities
+* lab5 - Overloading operators
+* lab6 - Inheritance and polymorphism
+* lab7 - Exceptions
 
+All labs have its own tests which checked the correctness of the programs and possible memory leaks.
+
+## Built With
+
+* [CLion](https://www.jetbrains.com/clion/) - Smart C and C++ editor for all the shortcuts! <3
+
+## Acknowledgments
+
+* Really big thanks to our lecturer for a complete C ++ tutorial!
